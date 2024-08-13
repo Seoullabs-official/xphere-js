@@ -10,7 +10,7 @@ class Enc {
   private static HASH_SIZE = 64;
   private static HEX_TIME_SIZE = 14;
   private static TIME_HASH_SIZE = 78;
-  private static ZERO_ADDRESS = '00000000000000000000000000000000000000000000';
+  public static ZERO_ADDRESS = '00000000000000000000000000000000000000000000';
 
   static string(obj: any) {
     return util.string(obj);

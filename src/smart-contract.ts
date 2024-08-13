@@ -109,10 +109,10 @@ class SmartContract {
     list_universal: (attr: any, page: number, count: number) => ({ $list_universal: [attr, page, count] }),
   };
 
-  Contract = class {
-    private _methods: { [key: string]: any } = {};
-    private _writer: string;
-    private _nonce: string;
+  static Contract = class {
+    public _methods: { [key: string]: any } = {};
+    public _writer: string;
+    public _nonce: string;
 
     constructor(writer: string, nonce: string) {
       this._writer = writer;
@@ -231,15 +231,15 @@ class SmartContract {
     }
   };
 
-  Method = class {
-    private _type: string = 'request';
-    private _machine: string = '0.2.0';
-    private _name: string = '';
-    private _version: string = '';
-    private _space: string = '';
-    private _writer: string = '';
-    private _parameters: any = {};
-    private _executions: any[] = [];
+  static Method = class {
+    public _type: string = 'request';
+    public _machine: string = '0.2.0';
+    public _name: string = '';
+    public _version: string = '';
+    public _space: string = '';
+    public _writer: string = '';
+    public _parameters: any = {};
+    public _executions: any[] = [];
 
     constructor(data: MethodData) {
       if (typeof data === 'object') {
@@ -494,16 +494,16 @@ class SmartContract {
     }
   };
 
-  LegacyMethod = class {
-    private _type: 'request' | 'contract' = 'request';
-    private _name: string = '';
-    private _version: string = '';
-    private _space: string = '';
-    private _writer: string = '';
-    private _parameters: { [key: string]: any } = {}; // 구체적인 타입 정의가 필요할 수 있음
-    private _conditions: any[] = [];
-    private _updates: any[] = [];
-    private _response: any[] = [];
+  static LegacyMethod = class {
+    public _type: 'request' | 'contract' = 'request';
+    public _name: string = '';
+    public _version: string = '';
+    public _space: string = '';
+    public _writer: string = '';
+    public _parameters: { [key: string]: any } = {}; // 구체적인 타입 정의가 필요할 수 있음
+    public _conditions: any[] = [];
+    public _updates: any[] = [];
+    public _response: any[] = [];
 
     constructor(data: LegacyMethodData) {
       if (typeof data === 'object') {

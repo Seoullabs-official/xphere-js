@@ -1,10 +1,21 @@
 {
-  "name": "dh-test",
-  "version": "0.0.295",
+  "name": "xphere",
+  "version": "1.0.0",
+  "description": "Xphere Javascript API",
+  "author": "Seoul Labs",
   "main": "./lib/commonjs/index.js",
   "module": "./lib/esm/index.js",
   "types": "./lib/types/index.d.ts",
   "license": "MIT",
+  "keywords": [
+    "xphere",
+    "xp",
+    "JavaScript",
+    "API",
+    "xpherejs",
+    "xphere.js",
+    "blockchain"
+  ],
   "scripts": {
     "clean": "rm -rf lib",
     "build:esm": "tsc -p tsconfig.esm.json",
@@ -13,7 +24,10 @@
     "build": "yarn clean && concurrently --kill-others-on-fail \"yarn:build:*\""
   },
   "files": [
-    "lib"
+    "lib",
+    "src",
+    "package.json",
+    "README.md"
   ],
   "devDependencies": {
     "@eslint/js": "^9.8.0",
