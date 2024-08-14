@@ -5,11 +5,11 @@ import util from './util';
 type CryptoJSAlgo = 'SHA256' | 'RIPEMD160';
 
 class Enc {
-  private static SHORT_HASH_SIZE = 40;
-  private static ID_HASH_SIZE = 44;
-  private static HASH_SIZE = 64;
-  private static HEX_TIME_SIZE = 14;
-  private static TIME_HASH_SIZE = 78;
+  public static SHORT_HASH_SIZE = 40;
+  public static ID_HASH_SIZE = 44;
+  public static HASH_SIZE = 64;
+  public static HEX_TIME_SIZE = 14;
+  public static TIME_HASH_SIZE = 78;
   public static ZERO_ADDRESS = '00000000000000000000000000000000000000000000';
 
   static string(obj: any) {

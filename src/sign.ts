@@ -10,8 +10,8 @@ interface KeyPair {
 }
 
 class Sign {
-  private static KEY_SIZE = 64;
-  private static SIGNATURE_SIZE = 128;
+  public static KEY_SIZE = 64;
+  public static SIGNATURE_SIZE = 128;
 
   static keyPair() {
     const pair = nacl.sign.keyPair();

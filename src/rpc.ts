@@ -268,15 +268,15 @@ class Rpc {
     });
   }
 
-  private static get(path: string, data: any): Promise<RpcResponse> {
+  static get(path: string, data: any): Promise<RpcResponse> {
     return Rpc.fetch('GET', path, data);
   }
 
-  private static post(path: string, data: any): Promise<RpcResponse> {
+  static post(path: string, data: any): Promise<RpcResponse> {
     return Rpc.fetch('POST', path, data);
   }
 
-  private static fetch(method: RpcMethod, path: string, data: any): Promise<RpcResponse> {
+  static fetch(method: RpcMethod, path: string, data: any): Promise<RpcResponse> {
     return new Promise<RpcResponse>((resolve, reject) => {
       const item = Rpc.axiosItem(Rpc.endpoint(), method, path, data, Rpc.headers());
       axios(item)
@@ -301,7 +301,7 @@ class Rpc {
     });
   }
 
-  private static signedData(item: any, private_key: string | null = null, type: string = 'transaction'): any {
+  static signedData(item: any, private_key: string | null = null, type: string = 'transaction'): any {
     if (!private_key) {
       private_key = sign.privateKey();
     }
