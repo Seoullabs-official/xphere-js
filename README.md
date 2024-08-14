@@ -62,7 +62,7 @@ When creating your own example, please replace the value of 'privateKey' with th
 ```javascript
 import XPHERE from 'xphere';
 
-const peer = '43.225.140.61';
+const peer = '127.0.0.1';
 
 XPHERE.Rpc.endpoint(peer);
 
@@ -92,7 +92,7 @@ For testing purposes, we have deployed a faucet contract on the test-net.
 ```javascript
 import XPHERE from 'xphere';
 
-const peer = '43.225.140.61';
+const peer = '127.0.0.1';
 
 XPHERE.Rpc.endpoint(peer);
 
@@ -119,7 +119,7 @@ Since the decimal point of XP is 18 digits, you need to add 18 zeros to the 'amo
 ```javascript
 import XPHERE from 'xphere';
 
-const peer = '43.225.140.61';
+const peer = '127.0.0.1';
 
 XPHERE.Rpc.endpoint(peer);
 
@@ -141,4 +141,4 @@ console.log(result);
 
 If you need an example of writing a smart contract, please refer to the following repository.
 
-- Sample contracts: https://github.com/Seoullabs-official/xrc-sample-contract
+- Sample contracts: https://github.com/Seoullabs-official/contract-example
