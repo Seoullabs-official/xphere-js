@@ -1,6 +1,6 @@
 {
   "name": "xphere",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Xphere Javascript API",
   "author": "Seoul Labs",
   "main": "./lib/commonjs/index.js",
