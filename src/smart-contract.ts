@@ -47,6 +47,7 @@ class SmartContract {
   private static readonly ZERO_ADDRESS = '00000000000000000000000000000000000000000000';
 
   static Operator = {
+    /* BasicOperator */
     legacy_condition: (abi: any, err_msg: string = 'Conditional error') => [abi, err_msg],
     condition: (abi: any, err_msg: string = 'Conditional error') => ({ $condition: [abi, err_msg] }),
     response: (abi: any) => ({ $response: [abi] }),
@@ -57,6 +58,8 @@ class SmartContract {
     and: (vars: any[] = []) => ({ $and: vars }),
     or: (vars: any[] = []) => ({ $or: vars }),
     get: (obj: any = {}, key: string = '') => ({ $get: [obj, key] }),
+
+    /* ArithmeticOperator */
     add: (vars: any[] = []) => ({ $add: vars }),
     sub: (vars: any[] = []) => ({ $sub: vars }),
     mul: (vars: any[] = []) => ({ $mul: vars }),
@@ -66,6 +69,8 @@ class SmartContract {
     precise_mul: (left: any = null, right: any = null, scale: number = 0) => ({ $precise_mul: [left, right, scale] }),
     precise_div: (left: any = null, right: any = null, scale: number = 0) => ({ $precise_div: [left, right, scale] }),
     scale: (value: any = null) => ({ $scale: [value] }),
+
+    /* CastOperator */
     get_type: (obj: any) => ({ $get_type: [obj] }),
     is_numeric: (vars: any[] = []) => ({ $is_numeric: vars }),
     is_int: (vars: any[] = []) => ({ $is_int: vars }),
@@ -74,6 +79,8 @@ class SmartContract {
     is_bool: (vars: any[] = []) => ({ $is_bool: vars }),
     is_array: (vars: any[] = []) => ({ $is_array: vars }),
     is_double: (vars: any[] = []) => ({ $is_double: vars }),
+
+    /* ComparisonOperator */
     eq: (left: any = 0, right: any = 0) => ({ $eq: [left, right] }),
     ne: (left: any = 0, right: any = 0) => ({ $ne: [left, right] }),
     gt: (left: any = 0, right: any = 0) => ({ $gt: [left, right] }),
@@ -81,6 +88,8 @@ class SmartContract {
     gte: (left: any = 0, right: any = 0) => ({ $gte: [left, right] }),
     lte: (left: any = 0, right: any = 0) => ({ $lte: [left, right] }),
     in: (target: any = null, cases: any[] = []) => ({ $in: [target, cases] }),
+
+    /* ReadWriteOperator */
     load_param: (vars: string | any[]) => (typeof vars === 'string' ? { $load_param: [vars] } : { $load_param: vars }),
     read_universal: (attr: any = null, key: any = null, defaultValue: any = null) => ({
       $read_universal: [attr, key, defaultValue],
@@ -92,21 +101,25 @@ class SmartContract {
       $write_universal: [attr, key, value],
     }),
     write_local: (attr: any = null, key: any = null, value: any = null) => ({ $write_local: [attr, key, value] }),
+
+    /* UtilOperator */
     concat: (vars: any[] = []) => ({ $concat: vars }),
     strlen: (value: string = '') => ({ $strlen: [value] }),
     reg_match: (reg: any = null, value: string = '') => ({ $reg_match: [reg, value] }),
     encode_json: (target: any = null) => ({ $encode_json: [target] }),
     decode_json: (target: string = '') => ({ $decode_json: [target] }),
-    hash: (vars: any[] = []) => ({ $hash: [vars] }),
-    short_hash: (vars: any[] = []) => ({ $short_hash: [vars] }),
-    id_hash: (vars: any[] = []) => ({ $id_hash: [vars] }),
+    hash: (...vars: any[]) => ({ $hash: [vars] }),
+    short_hash: (...vars: any[]) => ({ $short_hash: [vars] }),
+    id_hash: (...vars: any[]) => ({ $id_hash: [vars] }),
     sign_verify: (obj: any = null, public_key: string = '', signature: string = '') => ({
       $sign_verify: [obj, public_key, signature],
     }),
+
+    /* ChainOperator */
     get_block: (target: any, full: boolean) => ({ $get_block: [target, full] }),
     get_resource_block: (target: any, full: boolean) => ({ $get_resource_block: [target, full] }),
     get_transaction: (target: any) => ({ $get_transaction: [target] }),
-    list_universal: (attr: any, page: number, count: number) => ({ $list_universal: [attr, page, count] }),
+    list_universal: (attr: any, page: any, count: any) => ({ $list_universal: [attr, page, count] }),
   };
 
   static Contract = class {
