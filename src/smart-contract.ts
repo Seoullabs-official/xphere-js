@@ -157,14 +157,14 @@ class SmartContract {
     }
 
     public methods(full: boolean = false) {
-      let methods: { [key: string]: any } = {};
+      const methods: { [key: string]: any } = {};
 
       if (full) {
-        for (let i in this._methods) {
+        for (const i in this._methods) {
           methods[i] = this._methods[i].compile();
         }
       } else {
-        for (let i in this._methods) {
+        for (const i in this._methods) {
           methods[i] = this._methods[i].type();
         }
       }
@@ -205,7 +205,7 @@ class SmartContract {
                   ),
                 )
                 .then((code: any) => {
-                  for (let i in code.data) {
+                  for (const i in code.data) {
                     if (code.data[i] === null) {
                       console.log('Failed. Resending code... ' + thash);
                       broadcast(method);
@@ -238,7 +238,7 @@ class SmartContract {
           });
       };
 
-      for (let i in this._methods) {
+      for (const i in this._methods) {
         broadcast(this._methods[i]);
       }
     }

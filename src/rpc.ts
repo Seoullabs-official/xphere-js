@@ -311,7 +311,7 @@ class Rpc {
       return {};
     }
 
-    let data: any = {};
+    const data: any = {};
 
     item.from = sign.address(sign.publicKey(private_key));
 
@@ -327,7 +327,7 @@ class Rpc {
   }
 
   static axiosItem(endpoint: string, method: string, path: string, data: any, headers?: any): AxiosRequestConfig {
-    let item: any = {
+    const item: any = {
       method: method,
       url: `${util.wrappedEndpoint(endpoint)}/${path}`,
       timeout: Rpc.timeout(),
@@ -338,17 +338,17 @@ class Rpc {
     }
 
     if (method === 'GET') {
-      let params: string[] = [];
+      const params: string[] = [];
 
-      for (let key in data) {
+      for (const key in data) {
         params.push(`${key}=${util.string(data[key])}`);
       }
 
       item.url = item.url + (Object.keys(data).length === 0 ? '' : '?' + params.join('&'));
     } else {
-      let params = new FormData();
+      const params = new FormData();
 
-      for (let key in data) {
+      for (const key in data) {
         params.set(key, util.string(data[key]));
       }
 
@@ -386,9 +386,9 @@ class Rpc {
     try {
       let count = 0;
       let results: any, item: any, cancel: any;
-      let token = new axios.CancelToken((c) => (cancel = c));
+      const token = new axios.CancelToken((c) => (cancel = c));
 
-      let tasks = endpoints.map((endpoint) => {
+      const tasks = endpoints.map((endpoint) => {
         item = Rpc.axiosItem(endpoint, method, path, data, Rpc.headers());
         item.cancelToken = token;
 
@@ -451,9 +451,9 @@ class Rpc {
     }
 
     try {
-      let results: any[] = [];
+      const results: any[] = [];
       let item: any;
-      let tasks = endpoints.map((endpoint) => {
+      const tasks = endpoints.map((endpoint) => {
         item = Rpc.axiosItem(endpoint, method, path, data, Rpc.headers());
 
         axios(item)
@@ -468,7 +468,7 @@ class Rpc {
             if (error.code === 'ECONNABORTED' || error.message.includes('timeout')) {
               results.push({ endpoint: endpoint, code: 408, msg: 'Request timed out' });
             } else if (error.response && error.response.data && error.response.data.code) {
-              let r = error.response.data;
+              const r = error.response.data;
               r.endpoint = endpoint;
               results.push(r);
             } else if (error.response && error.response.status) {

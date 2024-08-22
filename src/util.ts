@@ -96,7 +96,7 @@ class Util {
   }
 
   static isIP(string: string): boolean {
-    let pattern =
+    const pattern =
       /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(:([0-9]{1,5}))?$/;
     return pattern.test(string);
   }
@@ -130,12 +130,12 @@ class Util {
   }
 
   static merge<T>(array1: T[], array2: T[]): T[] {
-    let m = array1.concat(array2);
+    const m = array1.concat(array2);
     return [...new Set(m)];
   }
 
   static flatMerge<T>(arrays: T[][]): T[] {
-    let m = arrays.flat();
+    const m = arrays.flat();
     return [...new Set(m)];
   }
 
