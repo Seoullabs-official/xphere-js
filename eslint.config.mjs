@@ -36,7 +36,7 @@ export default [
 
       parserOptions: {
         project: 'tsconfig.json',
-        tsconfigRootDir: '/Users/hans/Documents/workspace/GitHub/xphere',
+        tsconfigRootDir: __dirname,
       },
     },
 
