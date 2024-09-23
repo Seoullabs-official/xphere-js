@@ -142,6 +142,24 @@ class Util {
   static randomSlice<T>(array: T[], size: number): T[] {
     return Util.shuffle(array).slice(0, size);
   }
+
+  static applyDecimal(value: string | number, decimal: number): string {
+    const bigValue = BigInt(value);
+    const divisor = BigInt(10 ** decimal);
+
+    const integerPart = bigValue / divisor;
+    const fractionalPart = bigValue % divisor;
+
+    if (fractionalPart === BigInt(0)) {
+      return integerPart.toString();
+    }
+
+    let fractionalString = fractionalPart.toString().padStart(decimal, '0');
+
+    fractionalString = fractionalString.replace(/0+$/, '');
+
+    return `${integerPart.toString()}.${fractionalString}`;
+  }
 }
 
 export default Util;
